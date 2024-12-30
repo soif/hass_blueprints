@@ -1,0 +1,219 @@
+blueprint:
+  name: Milight Remote 8 Zones
+  description: Links a Milight remote (using ESPMH) to light entities
+  domain: automation
+  author: Soif
+
+  input:
+    mqtt:
+      name: ESPMH MQTT Topic
+      icon: mdi:cog
+      description: "ESPMH publishes in the MQTT topic: milight/state/DEVICE_ID/DEVICE_TYPE/group_id"
+      input:
+
+        device_id:
+          name: MQTT Device ID
+          description: ""
+          default: "0x19EF"
+          selector:
+            text:
+
+        device_type:
+          name: MQTT Device Type
+          description: ""
+          default: "rgb_cct"
+          selector:
+            text:
+
+    buttons:
+      name: Lights
+      icon: mdi:cog
+      description: "Define the light entities to be controlled by each Zone button"
+      input:
+
+        light0:
+          name: Zone 0 (Master) Lights
+          description: "This is normally the Master zone switch. Leave it Blank to control all other defined lights below. Else to act as an independant switch, fill the entities to be controlled"
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+
+        light1:
+          name: Zone 1 Lights
+          description: ""
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+        light2:
+          name: Zone 2 Lights
+          description: ""
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+        light3:
+          name: Zone 3 Lights
+          description: ""
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+        light4:
+          name: Zone 4 Lights
+          description: ""
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+        light5:
+          name: Zone 5 Lights
+          description: ""
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+        light6:
+          name: Zone 6 Lights
+          description: ""
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+        light7:
+          name: Zone 7 Lights
+          description: ""
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+        light8:
+          name: Zone 8 Lights
+          description: ""
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - light
+
+trigger_variables:
+  device_id: !input device_id
+  device_type: !input device_type
+
+#light1 + light2 + light3 + light4 + light5 + light6 + light7 + light8
+
+triggers:
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/0"
+    #id: master
+    variables:
+      light0: !input light0
+      light1: !input light1
+      light2: !input light2
+      light3: !input light3
+      light4: !input light4
+      light5: !input light5
+      light6: !input light6
+      light7: !input light7
+      light8: !input light8
+      #light_target: "{{ light1 }}"
+      light_target: >-
+         {% if light0 ==[] %}
+           {{ light1 + light2 + light3 + light4 + light5 + light6 + light7 + light8 }}
+         {% else %}
+           {{ light0 }}
+         {% endif %}
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/1"
+    variables:
+      light_target: !input light1
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/2"
+    variables:
+      light_target: !input light2
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/3"
+    variables:
+      light_target: !input light3
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/4"
+    variables:
+      light_target: !input light4
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/5"
+    variables:
+      light_target: !input light5
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/6"
+    variables:
+      light_target: !input light6
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/7"
+    variables:
+      light_target: !input light7
+  - trigger: mqtt
+    topic: "milight/state/{{ device_id }}/{{ device_type }}/8"
+    variables:
+      light_target: !input light8
+
+conditions: []
+
+actions:
+
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.payload_json.state =='ON' }}"
+        sequence:
+          - action: light.turn_on
+            data:
+              rgb_color:
+                - "{{ trigger.payload_json.color.r }}"
+                - "{{ trigger.payload_json.color.g }}"
+                - "{{ trigger.payload_json.color.b }}"
+              #brightness_pct: "{{ (trigger.payload_json.brightness / 255 * 100)| int }}"
+              brightness_pct: >-
+                {% if trigger.payload_json.brightness is defined %}
+                  {{ (trigger.payload_json.brightness / 255 * 100)| int }}
+                {% else %}
+                  100
+                {% endif %}
+            target:
+              entity_id: "{{ light_target }}"
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.payload_json.state =='OFF' }}"
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: "{{ light_target }}"
+            data: {}
+
+mode: single
