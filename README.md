@@ -4,7 +4,7 @@
 
 ## Automations
 
-### * Milight Remote v1.0
+### * Milight Remote - v1.00
 
 Allows control of up to 8 (preferably RGB) lights using an affordable yet convenient [Milight Remote](https://www.aliexpress.com/w/wholesale-milight-remote.html).
 
