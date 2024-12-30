@@ -1,6 +1,6 @@
 # Milight Remote
 
-Allows to control up to 8 (preferably RGB) lights using a Milight Remote.
+Allows control of up to 8 (preferably RGB) lights using an affordable yet convenient [Milight Remote](https://www.aliexpress.com/w/wholesale-milight-remote.html).
 
 ### Requirements
 
