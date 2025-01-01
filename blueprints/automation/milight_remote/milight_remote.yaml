@@ -10,7 +10,7 @@ blueprint:
     \n
     Links Milight remote buttons to light entities, using an ESP8266 Milight Hub as the RF/MQTT gateway.
 
-     - [documentation](https://github.com/soif/hass_blueprints/blob/master/blueprints/automation/milight_remote/)\n
+     - [documentation](https://github.com/soif/hass_blueprints/blob/master/blueprints/automation/milight_remote)\n
      - [forum](https://community.home-assistant.io/)
     "
     
