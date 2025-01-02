@@ -12,7 +12,7 @@ blueprint:
     \n
     ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsoif%2Fhass_blueprints%2Frefs%2Fheads%2Fmaster%2Fblueprints%2Fautomation%2Fmilight_remote%2Finfo.json&query=%24.version&label=Latest%20Version&color=red)  
     [![Static Badge](https://img.shields.io/badge/Documentation-blue)](https://github.com/soif/hass_blueprints/tree/master/blueprints/automation/milight_remote) [![Static Badge](https://img.shields.io/badge/Forum_Thread-purple)](https://community.home-assistant.io/)
-    [![Buy me a beer](https://img.shields.io/badge/Buy_a_Beer-€5-AA0000?labelColor=ff0000)](https://www.buymeacoffee.com/soif)
+    [![Buy me a beer](https://img.shields.io/badge/Buy_me_a_Beer-€5-AA0000?labelColor=ff0000)](https://www.buymeacoffee.com/soif)
     "
     
   input:
