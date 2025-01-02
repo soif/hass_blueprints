@@ -20,3 +20,8 @@ Allows control of up to 8 (preferably RGB) lights using an affordable yet conven
 
 *(Under development)*
 
+
+## Support me
+
+[![Buy me a beer](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20beer&emoji=🍺&slug=soif&button_colour=ff0000&font_colour=ffffff&font_family=Comic&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/soif)
+
