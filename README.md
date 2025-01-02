@@ -4,7 +4,7 @@
 
 ## Automations
 
-### * Milight Remote
+### 🌈 Milight Remote
 
 ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsoif%2Fhass_blueprints%2Frefs%2Fheads%2Fmaster%2Fblueprints%2Fautomation%2Fmilight_remote%2Finfo.json&query=%24.version&label=Version&color=red)
 
@@ -13,7 +13,7 @@ Allows control of up to 8 (preferably RGB) lights using an affordable yet conven
 
 
 [![Static Badge](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/soif/hass_blueprints/tree/master/blueprints/automation/milight_remote) 
-[![Static Badge](https://img.shields.io/badge/Forum_Thread-purple?style=for-the-badge)](https://community.home-assistant.io/) 
+[![Static Badge](https://img.shields.io/badge/Forum_Thread-purple?style=for-the-badge)](https://community.home-assistant.io/t/milight-remote-to-control-rgb-lights/820400) 
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fraw.githubusercontent.com%2Fsoif%2Fhass_blueprints%2Frefs%2Fheads%2Fmaster%2Fblueprints%2Fautomation%2Fmilight_remote%2Fmilight_remote.yaml)
 
